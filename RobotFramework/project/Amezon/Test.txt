@@ -1,0 +1,83 @@
+*** Settings ***
+Library           Selenium2Library
+Library           Collections
+Library           ExcelLibrary
+
+*** Variables ***
+${url}            https://www.amazon.com
+${popup}          xpath=//*[@id='redir-go-to-site']
+${loginLink}      xpath=//*[@id='nav-link-yourAccount']
+${email}          ap_email
+${Password}       ap_password
+${submit}         signInSubmit
+${ShopByCategory}    //span[text()='Shop by']
+${MouseOverToBooks}    xpath=(//span[text()='Books'])[1]
+${AllBooks}       xpath=//span[text()='All Books']
+${clickOnRead100Books}    xpath=//a[text()='100 books to read in a lifetime']
+${FirestBook}     xpath=(//*[@id='result_0'])//h2
+${addToCart}      id=add-to-cart-button
+${clickOnCart}    id=nav-cart
+${Title}          xpath=.//*[@id='nav-logo']/a/span[1]
+
+*** Test Cases ***
+AddingItemsIntoCart
+    Open Browser    ${url}
+    Sleep    10
+    Maximize Browser Window
+    Click Element    ${popup}
+    Mouse Over    ${ShopByCategory}
+    Wait Until Element Is Visible    ${MouseOverToBooks}    30s
+    Mouse Over    ${MouseOverToBooks}
+    Click Element    ${AllBooks}
+    Click Element    ${clickOnRead100Books}
+    ${mainWindow}=    Get Window Titles
+    ${mainWindow}=    Get From List    ${mainWindow}    0
+    Click Element    ${FirestBook}
+    @{windows}=    Get Window Titles
+    : FOR    ${item}    IN    @{windows}
+    \    Continue For Loop If    '${item}'=='${mainWindow}'
+    \    Select Window    Title=${item}
+    Comment    Select Window    Title=Amezon
+    Wait Until Element Is Visible    ${addToCart}
+    Click Element    ${addToCart}
+    Close Window
+    Select Window    ${mainWindow}
+    ${item}
+
+LoginTest
+    Open Browser    ${url}
+    Sleep    10
+    Maximize Browser Window
+    Click Element    ${popup}
+    Click Element    ${loginLink}
+    Input Text    ${email}    maheshbadiger86@gmail.com
+    Input Text    ${Password}    Qwerty@123
+    Click Element    ${submit}
+
+Looping
+    : FOR    ${INDEX}    IN RANGE    1    10
+    \    Log    ${INDEX}
+    Log    For Loop Is Over
+    : FOR    ${animal}    IN    Cat    Dog
+    \    Log    ${animal}
+    \    Log    2nd Keyword
+    Log    Outside Loop
+    @{item}    Create List    1    2    3
+    : FOR    ${ELEMENT}    IN    @{item}
+    \    Log    ${ELEMENT}
+    \    Run Keyword If    ${ELEMENT} == 2    Exit For Loop
+    Log    Exit for loop trigger at 2nd element
+    : FOR    ${ELEMENT}    IN RANGE    1    20
+    \    Log    ${ELEMENT}
+    \    Run Keyword If    ${ELEMENT} % 2 == 0    Log    ${ELEMENT}
+    \    Log    Odd numbers
+    Log    Exit for loop trigger at 2nd element
+
+ConditionalStatements
+    : FOR    ${ELEMENT}    IN RANGE    1    20
+    \    Run Keyword If    ${ELEMENT} % 2 != 0    Log    ${url}
+    Log    Exit for loop trigger at 2nd element
+
+ReadDataIntoExcelSheet
+    Open Excel    E:/Mahesh/writeData.xlsx
+    Put String To Cell    write    0    0    Read

@@ -1,0 +1,31 @@
+*** Settings ***
+Library           Selenium2Library
+Library           Collections
+Library           ExcelLibrary
+
+*** Variables ***
+${url}            https://www.amazon.com
+${popup}          xpath=//*[@id='redir-go-to-site']
+${loginLink}      xpath=//*[@id='nav-link-yourAccount']
+${email}          ap_emai
+${Password}       ap_password
+${submit}         signInSubmit
+${ShopByCategory}    //span[text()='Shop by']
+${MouseOverToBooks}    xpath=(//span[text()='Books'])[1]
+${AllBooks}       xpath=//span[text()='All Books']
+${clickOnRead100Books}    xpath=//a[text()='Amazon Best Reads']
+${FirestBook}     xpath=((//div[@class='a-box-group a-spacing-top-micro'])//span)[1]
+${addToCart}      id=xyz
+${clickOnCart}    id=nav-cart
+${Title}          xpath=.//*[@id='nav-logo']/a/span[1]
+
+*** Test Cases ***
+LoginTest
+    Open Browser    ${url}
+    Sleep    10
+    Maximize Browser Window
+    Click Element    ${popup}
+    Click Element    ${loginLink}
+    Input Text    ${email}    maheshbadiger86@gmail.com
+    Input Text    ${Password}    Qwerty@123
+    Click Element    ${submit}
