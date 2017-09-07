@@ -69,7 +69,7 @@ public class LoginPage extends BasePage{
 		//emailID.sendKeys(data.get("Email"));
 		Thread.sleep(2000);
 		password.clear();
-		password.sendKeys("a741157880");
+		password.sendKeys("xxxxx");
 		//password.sendKeys(data.get("Password"));
 		Thread.sleep(2000);
 		loginButton.click();
