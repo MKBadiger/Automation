@@ -65,7 +65,7 @@ public class LoginPage extends BasePage{
 		clickOnSignIn.click();
 		Thread.sleep(2000);
 		emailID.clear();
-		emailID.sendKeys("arti.kote8808@gmail.com");
+		emailID.sendKeys("a08@gmail.com");
 		//emailID.sendKeys(data.get("Email"));
 		Thread.sleep(2000);
 		password.clear();
