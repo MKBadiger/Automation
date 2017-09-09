@@ -52,7 +52,7 @@ public class F_LoginPage extends F_BasePage{
 		//mobileNo.click();
 		signUp.click();
 		Thread.sleep(2000);
-		password.sendKeys("Qwerty@123");
+		password.sendKeys("***********");
 		Thread.sleep(2000);
 		signIn.click();
 		while(true)
