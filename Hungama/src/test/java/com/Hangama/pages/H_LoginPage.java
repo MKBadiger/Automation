@@ -128,13 +128,13 @@ public class H_LoginPage extends H_BasePage{
 				Thread.sleep(2000);
 				E_email.clear();
 				E_email.sendKeys(data.get("Email/MobileNo"));
-				//E_email.sendKeys("mdemotest999@gmail.com");
+				//E_email.sendKeys("t@gmail.com");
 				driverMob.hideKeyboard();
 				Thread.sleep(2000);
 				E_Pwd.clear();
 				E_Pwd.sendKeys(data.get("Password"));
 				driverMob.hideKeyboard();
-				//E_Pwd.sendKeys("qwerty123");
+				//E_Pwd.sendKeys("*******");
 				Thread.sleep(2000);
 				E_showPwd.click();
 				Thread.sleep(2000);
