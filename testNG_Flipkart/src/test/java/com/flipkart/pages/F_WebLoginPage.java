@@ -54,11 +54,11 @@ public class F_WebLoginPage extends F_BasePage{
 		loginLink.click();
 		Thread.sleep(2000);
 		mobileNo.clear();
-		//mobileNo.sendKeys("8951350157");
+		//mobileNo.sendKeys("89513501");
 		mobileNo.sendKeys(data.get("Email"));
 		System.out.println(data.get("Email"));
 		Thread.sleep(2000);
-		//password.sendKeys("Qwerty@123");
+		//password.sendKeys("**********");
 		password.sendKeys(data.get("Password"));
 		System.out.println(data.get("Password"));
 		Thread.sleep(5000);
