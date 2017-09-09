@@ -39,10 +39,10 @@ public class W_LoginPage extends BasePage{
 		
 		Thread.sleep(2000);
 		email.clear();
-		email.sendKeys("arti.kote8808@gmail.com");
+		email.sendKeys("a@gmail.com");
 		Thread.sleep(2000);
 		//password.clear();
-		password.sendKeys("a7411578808");
+		password.sendKeys("*******");
 		Thread.sleep(2000);
 		login.click();
 		Thread.sleep(20000);
